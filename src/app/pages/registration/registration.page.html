@@ -1,0 +1,86 @@
+<ion-content>
+  <form [formGroup]="registrationForm" autocomplete="off" (submit)="onSubmit(registrationForm)">
+
+    <ion-list lines="none" *ngIf="registrationError">
+      <ion-item> 
+        <ion-icon color="danger" name="close-circle-outline" slot="start"></ion-icon>
+        <ion-text color="danger">
+          <h4>Error during user registration.</h4>
+        </ion-text>
+      </ion-item>
+    </ion-list>
+  <ion-list lines="none">
+    <ion-item>
+      <ion-label position="stacked">Firstname</ion-label>
+      <ion-input formControlName="firstName"></ion-input>
+      <ion-icon name="body-outline" slot="start"></ion-icon>
+      <ion-text class="ion-padding" color="danger" *ngIf="registrationForm.controls.firstName.errors 
+        && (registrationForm.controls.firstName.dirty || registrationForm.controls.firstName.touched)">
+        <sub><ion-icon color="danger" name="alert-circle-outline" slot="start"></ion-icon>This field is required.</sub>
+      </ion-text>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">LastName</ion-label>
+      <ion-input formControlName="lastName"></ion-input>
+      <ion-icon name="body-outline" slot="start"></ion-icon>
+      <ion-text class="ion-padding"  color="danger" *ngIf="registrationForm.controls.lastName.errors
+      && (registrationForm.controls.lastName.dirty || registrationForm.controls.lastName.touched)">
+        <sub><ion-icon color="danger" name="alert-circle-outline" slot="start"></ion-icon>This field is required.</sub>
+      </ion-text>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Username</ion-label>
+      <ion-input formControlName="userName"></ion-input>
+      <ion-icon name="chatbubble-ellipses-outline" slot="start"></ion-icon>
+      <ion-text class="ion-padding"  color="danger" *ngIf="registrationForm.controls.userName.errors
+      && (registrationForm.controls.userName.dirty || registrationForm.controls.userName.touched)">
+        <sub><ion-icon color="danger" name="alert-circle-outline" slot="start"></ion-icon>This field is required.</sub>
+      </ion-text>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Password</ion-label>
+      <ion-input type="password" formControlName="password"></ion-input>
+      <ion-icon name="key-outline" slot="start"></ion-icon>
+      <ion-text class="ion-padding" color="danger" *ngIf="registrationForm.controls.password.errors
+      && (registrationForm.controls.password.dirty || registrationForm.controls.password.touched)">
+        <sub><ion-icon color="danger" name="alert-circle-outline" slot="start"></ion-icon>This field is required.</sub>
+      </ion-text>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Email</ion-label>
+      <ion-input formControlName="email"></ion-input>
+      <ion-icon name="at-outline" slot="start"></ion-icon>
+      <ion-text class="ion-padding ion-text-left" color="danger" *ngIf="registrationForm.controls.email.errors?.required
+      && (registrationForm.controls.email.dirty || registrationForm.controls.email.touched)" position="fixed">
+        <sub><ion-icon color="danger" name="alert-circle-outline" slot="start"></ion-icon>This field is required.</sub>
+      </ion-text>
+      <ion-text class="ion-padding" color="danger" *ngIf="registrationForm.controls.email.errors?.pattern
+      && (registrationForm.controls.email.dirty || registrationForm.controls.email.touched)">
+        <sub><ion-icon color="danger" name="alert-circle-outline" slot="start"></ion-icon>Please provide valid email address.</sub>
+      </ion-text>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Phone</ion-label>
+      <ion-input formControlName="phoneNumber"></ion-input>
+      <ion-icon name="keypad-outline" slot="start"></ion-icon>
+      <ion-text class="ion-padding"  color="danger" *ngIf="registrationForm.controls.phoneNumber.errors
+      && (registrationForm.controls.phoneNumber.dirty || registrationForm.controls.phoneNumber.touched)">
+        <sub><ion-icon color="danger" name="alert-circle-outline" slot="start"></ion-icon>This field is required.</sub>
+      </ion-text>
+    </ion-item>
+  </ion-list>
+
+    <div class="ion-padding ion-text-center">
+      <ion-button type="submit" color="success" fill="solid" strong="true" [disabled]="registrationForm.invalid" expand="block">
+        <ion-text *ngIf="!registrationSubmited">Register</ion-text>
+        <ion-spinner *ngIf="registrationSubmited" name="dots"></ion-spinner>
+      </ion-button>
+    </div>
+
+  </form>
+</ion-content>

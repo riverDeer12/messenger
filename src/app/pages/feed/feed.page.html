@@ -5,7 +5,17 @@
 </ion-header>
 
 <ion-content fullscreen>
-  <ion-list>
+
+  <ion-grid *ngIf="loadingData">
+    <ion-row>
+      <ion-col size="5"></ion-col>
+      <ion-col size="3">
+        <ion-spinner name="dots"></ion-spinner>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-list *ngIf="!loadingData">
     <ion-list-header>
       Recent Conversations
     </ion-list-header>
@@ -44,22 +54,5 @@
     </ion-item>
   </ion-list>
 
-  <ion-tabs>
-    <ion-tab-bar slot="bottom">
-      <ion-tab-button tab="feed">
-        <ion-icon name="chatbubbles-sharp"></ion-icon>
-        <ion-label>Feed</ion-label>
-      </ion-tab-button>
-  
-      <ion-tab-button tab="settings">
-        <ion-icon name="cog-sharp"></ion-icon>
-        <ion-label>Settings</ion-label>
-      </ion-tab-button>
-  
-      <ion-tab-button (click)="openProfile()">
-        <ion-icon name="person-circle-sharp"></ion-icon>
-        <ion-label>My Profile</ion-label>
-      </ion-tab-button>
-    </ion-tab-bar>
-  </ion-tabs>
+  <app-navigation-tabs></app-navigation-tabs>
 </ion-content>

@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ReactiveFormsModule, FormGroup, FormControl, Validators, NgForm } from "@angular/forms";
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
-import { NavController } from '@ionic/angular';
-import { RegistrationPage } from '../registration/registration.page';
 
 @Component({
   selector: 'app-login',

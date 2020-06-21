@@ -1,3 +1,4 @@
+import { NavigationTabsComponent } from './../../components/navigation-tabs/navigation-tabs.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -15,6 +16,6 @@ import { FeedPage } from './feed.page';
     IonicModule,
     FeedPageRoutingModule
   ],
-  declarations: [FeedPage]
+  declarations: [FeedPage, NavigationTabsComponent]
 })
 export class FeedPageModule {}

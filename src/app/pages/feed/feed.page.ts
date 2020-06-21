@@ -1,5 +1,7 @@
+import { NavigationTabsComponent } from './../../components/navigation-tabs/navigation-tabs.component';
 import { Component, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { NavController, IonRouterOutlet } from '@ionic/angular';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-feed',
@@ -8,13 +10,22 @@ import { NavController } from '@ionic/angular';
 })
 export class FeedPage implements OnInit {
 
-  constructor(private navCtrl: NavController) { }
+  loadingData: boolean;
+  errorLoadingProfile: boolean;
+
+  constructor(private navCtrl: NavController,
+              private authService: AuthService) { }
 
   ngOnInit() {
+    this.loadingData = true;
+    this.errorLoadingProfile = false;
+    setTimeout(()=> {
+      this.getChats();
+    }, 1000);
   }
 
-  openProfile(){
-    this.navCtrl.navigateForward('/profile');
+  getChats(){
+    console.log("Milan")
+    this.loadingData = false;
   }
-
 }

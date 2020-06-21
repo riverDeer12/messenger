@@ -25,13 +25,13 @@
         </ion-item>
 
         <div class="ion-padding ion-text-center">
-          <ion-button type="submit" color="success" fill="solid" strong="true" [disabled]="loginForm.invalid" expand="block">
+          <ion-button type="submit" color="success" fill="solid" [disabled]="loginForm.invalid" expand="block">
             <ion-text *ngIf="!loginSubmited">Login</ion-text>
             <ion-spinner *ngIf="loginSubmited" name="dots"></ion-spinner>
           </ion-button>
           <ion-text>
             or<br/>
-            <ion-button color="warning" expand="block" fill="solid" strong="true" routerLink="/registration">Register</ion-button>
+            <ion-button color="warning" expand="block" fill="solid" routerLink="/registration">Register</ion-button>
           </ion-text>
         </div>
 

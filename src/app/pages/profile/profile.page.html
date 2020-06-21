@@ -1,9 +1,37 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>profile</ion-title>
+    <ion-title>My Profile</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content fullscreen>
+  <ion-grid *ngIf="loadingData">
+    <ion-row>
+      <ion-col size="5"></ion-col>
+      <ion-col size="3">
+        <ion-spinner name="dots"></ion-spinner>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-list *ngIf="!loadingData">
+    <ion-item>
+      <ion-label>Firstname: </ion-label>
+      {{ user.firstName }}
+    </ion-item>
+    <ion-item>
+      <ion-label>Lastname: </ion-label>
+      {{ user.lastName }}
+    </ion-item>
+    <ion-item>
+      <ion-label>Username: </ion-label>
+      {{ user.userName }}
+    </ion-item>
+    <ion-item>
+      <ion-label>Email: </ion-label>
+      {{ user.email }}
+    </ion-item>
+  </ion-list>
 
+  <app-navigation-tabs></app-navigation-tabs>
+  
 </ion-content>

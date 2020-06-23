@@ -54,5 +54,11 @@
     </ion-item>
   </ion-list>
 
+  <div class="container" *ngIf="messages.length > 0">
+    <div *ngFor="let message of messages">
+      <span>{{message.content}}</span>
+    </div>
+  </div>
+
   <app-navigation-tabs></app-navigation-tabs>
 </ion-content>

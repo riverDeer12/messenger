@@ -30,8 +30,7 @@ export class ProfilePage implements OnInit {
     .subscribe(user => {
         this.user = Object.assign(new User(), user);
         this.loadingData = false;
-      },
-      () => {
+      },() => {
         this.loadingData = false;
         this.errorLoadingProfile = true;
       }

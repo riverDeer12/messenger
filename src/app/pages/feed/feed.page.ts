@@ -1,7 +1,7 @@
-import { NavigationTabsComponent } from './../../components/navigation-tabs/navigation-tabs.component';
+import { MessagesService } from './../../services/messages.service';
+import { HubsService } from './../../services/hubs.service';
 import { Component, OnInit } from '@angular/core';
-import { NavController, IonRouterOutlet } from '@ionic/angular';
-import { AuthService } from 'src/app/services/auth.service';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-feed',
@@ -13,19 +13,28 @@ export class FeedPage implements OnInit {
   loadingData: boolean;
   errorLoadingProfile: boolean;
 
-  constructor(private navCtrl: NavController,
-              private authService: AuthService) { }
+  constructor(private hubsService: HubsService,
+              private messagesService: MessagesService) { }
 
   ngOnInit() {
     this.loadingData = true;
     this.errorLoadingProfile = false;
+
     setTimeout(()=> {
-      this.getChats();
+      this.hubsService.startConnection();
+      this.hubsService.addMessagesListener();
+      this.getMessages();
     }, 1000);
   }
 
-  getChats(){
-    console.log("Milan")
-    this.loadingData = false;
+  getMessages(){
+    this.messagesService.getUserMessages()
+      .subscribe(response => {
+          console.log(response);
+          this.loadingData = false;
+        },() => {
+          this.loadingData = false;
+          this.errorLoadingProfile = true;
+      });
   }
 }

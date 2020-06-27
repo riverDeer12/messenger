@@ -31,7 +31,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/profile/profile.module').then( m => m.ProfilePageModule)
   },
   {
-    path: 'chat',
+    path: 'chat/{id}',
     canActivate: [AuthGuard],
     loadChildren: () => import('./pages/chat/chat.module').then( m => m.ChatPageModule)
   },

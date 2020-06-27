@@ -3,4 +3,5 @@ export class Message {
     createdAt: Date;
     updatedAt: Date;
     content: string;
+    userId: string;
 }

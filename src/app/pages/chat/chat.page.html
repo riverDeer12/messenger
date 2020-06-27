@@ -1,9 +1,25 @@
-<ion-header>
+<ion-header *ngIf="loadingData">
   <ion-toolbar>
-    <ion-title>chat</ion-title>
+    <ion-title>
+      <ion-spinner name="dots"></ion-spinner>
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content *ngIf="loadingData">
+  <ion-item>
+    <ion-spinner name="dots"></ion-spinner>
+  </ion-item>
+</ion-content>
 
+<ion-header *ngIf="!loadingData">
+  <ion-toolbar>
+    <ion-title>{{chat.name}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="!loadingData">
+  <ion-item *ngFor="let message of messages">
+    {{message.content}}
+  </ion-item>
 </ion-content>

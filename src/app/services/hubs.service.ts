@@ -1,7 +1,6 @@
-import { Message } from './../shared/models/message';
-import { environment } from 'src/environments/environment';
 import { Injectable, EventEmitter } from '@angular/core';
 import * as SignalR from '@aspnet/SignalR';
+import { Message } from '../shared/models/message';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +9,7 @@ export class HubsService {
 
   constructor() { }
   
-  messageReceived = new EventEmitter<Message>();
+  messageReceived: EventEmitter<Message> = new EventEmitter();
   hubConnection: SignalR.HubConnection
   hubUrl = 'https://localhost:44303/message';
  
@@ -24,18 +23,16 @@ export class HubsService {
       .then(() => console.log('Connection started'))
       .catch(err => console.log('Error while starting connection: ' + err))
   }
- 
-  addMessagesListener(): any {
-    this.hubConnection.on('MessageReceived', 
-      (message) => {
-        this.messageReceived.emit(message);
+  
+
+  addChatMessagesListener = () => {
+    this.hubConnection.on('receivemessages', 
+    (message) => {
+      this.messageReceived.emit(message);
     });
   }
-  
-  // addMessagesListener = () => {
-  //   this.hubConnection.on('receivemessages', 
-  //   (messages) => {
-  //     console.log(messages);
-  //   });
-  // }
+
+  getReceivedMessage(){
+    return this.messageReceived;
+  }
 }

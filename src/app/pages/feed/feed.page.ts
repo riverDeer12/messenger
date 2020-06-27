@@ -1,10 +1,6 @@
-import { Message } from '@angular/compiler/src/i18n/i18n_ast';
-import { Message } from './../../shared/models/message';
-import { MessagesService } from './../../services/messages.service';
-import { HubsService } from './../../services/hubs.service';
+import { ChatsService } from './../../services/chats.service';
 import { Component, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
-import { ThrowStmt } from '@angular/compiler';
+import { Chat } from 'src/app/shared/models/chat';
 
 @Component({
   selector: 'app-feed',
@@ -13,38 +9,25 @@ import { ThrowStmt } from '@angular/compiler';
 })
 export class FeedPage implements OnInit {
 
-  messages: Message[] = [];
+  chats: Chat[] = [];
   loadingData: boolean;
   errorLoadingProfile: boolean;
 
-  constructor(private hubsService: HubsService,
-              private messagesService: MessagesService) { }
+  constructor(private chatsService: ChatsService) { }
 
   ngOnInit() {
     this.loadingData = true;
     this.errorLoadingProfile = false;
-
     setTimeout(()=> {
-      this.hubsService.startConnection();
-      this.subscribeToEvents();
-      this.getMessages();
+      this.getActiveChats();
     }, 1000);
   }
 
-  subscribeToEvents(): void{
-    this.hubsService.messageReceived.subscribe((message: Message) => {  
-      this.messages.push(message);   
-    });  
-  }
-
-  getMessages(){
-    this.messagesService.getUserMessages()
-      .subscribe(response => {
-          console.log(response);
-          this.loadingData = false;
-        },() => {
-          this.loadingData = false;
-          this.errorLoadingProfile = true;
-      });
+  getActiveChats(){
+    this.chatsService.getActiveChats().subscribe(chats => {
+      this.chats = chats.map(chat => 
+        Object.assign(new Chat(), chat));
+        this.loadingData = false;
+    });
   }
 }

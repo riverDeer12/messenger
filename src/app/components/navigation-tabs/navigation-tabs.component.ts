@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
-  selector: 'app-navigation-tabs',
+  selector: 'navigation-tabs',
   templateUrl: './navigation-tabs.component.html',
   styleUrls: ['./navigation-tabs.component.scss'],
 })

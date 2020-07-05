@@ -1,6 +1,8 @@
+import { NavController } from '@ionic/angular';
 import { ChatsService } from './../../services/chats.service';
 import { Component, OnInit } from '@angular/core';
 import { Chat } from 'src/app/shared/models/chat';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-feed',
@@ -13,7 +15,8 @@ export class FeedPage implements OnInit {
   loadingData: boolean;
   errorLoadingProfile: boolean;
 
-  constructor(private chatsService: ChatsService) { }
+  constructor(private chatsService: ChatsService,
+              private navCtrl: NavController) { }
 
   ngOnInit() {
     this.loadingData = true;
@@ -27,7 +30,12 @@ export class FeedPage implements OnInit {
     this.chatsService.getActiveChats().subscribe(chats => {
       this.chats = chats.map(chat => 
         Object.assign(new Chat(), chat));
+        console.log(chats);
         this.loadingData = false;
     });
+  }
+
+  openChat(chatId: string){
+    this.navCtrl.navigateForward('/chat/' + chatId);
   }
 }

@@ -24,9 +24,8 @@ export class HubsService {
       .catch(err => console.log('Error while starting connection: ' + err))
   }
   
-
   addChatMessagesListener = () => {
-    this.hubConnection.on('receivemessages', 
+    this.hubConnection.on('receivemessage', 
     (message) => {
       this.messageReceived.emit(message);
     });

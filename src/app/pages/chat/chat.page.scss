@@ -1,0 +1,31 @@
+.item-content{
+    background-color: #49fb90ad;
+    width: 40%;
+    border-radius: 10px;
+    padding: 10px;
+    color: #000000;
+    font-size: medium;
+    margin: 5px 0 5px 0;
+    font-family: monospace;
+    font-weight: bold;
+}
+
+.message-received{
+    background-color: #3e42409c;
+    color: #ffffff;
+}
+
+.back-button{
+    float: left;
+}
+
+.message-time{
+    font-size: smaller;
+    color: #00000080;
+}
+
+.send-message-button{
+    position: fixed;
+    right: 20px;
+    bottom: 6px;
+}

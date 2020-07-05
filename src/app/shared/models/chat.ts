@@ -6,4 +6,5 @@ export class Chat {
     name: string;
     messages: Message[];
     users: User[];
+    lastActivityAt: Date;
 }

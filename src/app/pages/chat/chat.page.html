@@ -15,11 +15,34 @@
 <ion-header *ngIf="!loadingData">
   <ion-toolbar>
     <ion-title>{{chat.name}}</ion-title>
+    <ion-tab-button class="back-button" (click)="goToFeed()">
+      <ion-icon name="arrow-back-outline"></ion-icon>
+    </ion-tab-button>
   </ion-toolbar>
 </ion-header>
 
 <ion-content *ngIf="!loadingData">
-  <ion-item *ngFor="let message of messages">
-    {{message.content}}
-  </ion-item>
+  <ion-list>
+    <ion-item class="message-box" *ngFor="let message of messages" lines="none">
+      <div class="item-content" 
+           [ngClass]="{'message-received': message.messageType === messageType().received}">
+        {{message.content}}
+        <hr/>
+        <div class="message-time">By: {{ message.applicationUser }}</div>
+        <div class="message-time">At: {{ message.createdAt | date: 'medium'}}</div>
+      </div>
+    </ion-item>
+  </ion-list>
 </ion-content>
+
+<ion-item>
+  <form [formGroup]="sendMessageForm" autocomplete="off" (submit)="sendMessage(sendMessageForm)">
+    <ion-input placeholder="Type message here..." type="text" formControlName="content">
+      <ion-button type="submit" class="send-message-button" color="success" fill="solid" 
+        [disabled]="sendMessageForm.invalid">
+        <ion-icon name="send-outline"></ion-icon>
+      </ion-button>
+    </ion-input>
+  </form>
+</ion-item>
+

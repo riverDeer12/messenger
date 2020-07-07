@@ -24,4 +24,8 @@ export class ChatsService {
   getArchivedChats(): Observable<Chat[]> {
     return this.http.get<Chat[]>(this.chatsUrl + "/getArchivedChats");
   }
+
+  joinChat(connectionId: string, chatId: string){
+    return this.http.get<object>(this.chatsUrl + '/joinChat/' + connectionId + '/' + chatId);
+  }
 }

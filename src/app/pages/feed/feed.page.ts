@@ -30,7 +30,7 @@ export class FeedPage implements OnInit {
     this.chatsService.getActiveChats().subscribe(chats => {
       this.chats = chats.map(chat => 
         Object.assign(new Chat(), chat));
-        console.log(chats);
+        console.log("Active chats:", chats);
         this.loadingData = false;
     });
   }

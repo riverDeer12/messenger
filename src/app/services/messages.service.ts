@@ -28,6 +28,4 @@ export class MessagesService {
   getChatMessages(chatId: string){
     return this.http.get<Message[]>(this.messagesUrl + "/getChatMessages/" + chatId);
   }
-
-
 }

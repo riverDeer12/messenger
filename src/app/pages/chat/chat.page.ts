@@ -17,6 +17,7 @@ import { FormGroup, FormControl, Validators, NgForm } from '@angular/forms';
 export class ChatPage implements OnInit {
 
   chatId: string;
+  connectionId: string;
   chat: Chat;
   messages: Message[];
   loadingData: boolean;
@@ -39,23 +40,20 @@ export class ChatPage implements OnInit {
     this.loadingData = true;
     this.errorSendingMessage = false;
     setTimeout(() => {
-      this.hubsService.startConnection();
-      this.hubsService.addChatMessagesListener();
-      this.subscribeToChatEvents();
+      this.setHubProperties();
       this.getChat();
     }, 1000);
   }
 
-  messageType = () => {
-    return MessageType;
-  };
-
-  goToFeed() {
-    this.navCtrl.navigateBack("/feed");
+  setHubProperties(){
+    this.getChat();
+    this.hubsService.startConnection(this.chatId);
+    this.subscribeToChatEvents();
   }
-
+  
   getChat() {
     this.chatId = this.route.snapshot.paramMap.get("id");
+
     this.chatsService.getChat(this.chatId).subscribe((response: any) => {
       this.chat = response as Chat;
       this.messages = this.chat.messages;
@@ -66,10 +64,12 @@ export class ChatPage implements OnInit {
   subscribeToChatEvents() {
     this.hubsService.getReceivedMessage().subscribe((response: any) => {
       this.messages.push(response as Message);
+      console.log(response);
     });
   }
 
   sendMessage(sendMessageForm: NgForm) {
+
     this.sendMessageForm.controls["chatId"].setValue(this.chatId);
 
     this.messagesService.sendChatMessage(sendMessageForm.value).subscribe(
@@ -80,5 +80,13 @@ export class ChatPage implements OnInit {
         this.errorSendingMessage = true;
       }
     );
+  }
+
+  messageType = () => {
+    return MessageType;
+  };
+
+  goToFeed() {
+    this.navCtrl.navigateBack("/feed");
   }
 }

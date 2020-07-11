@@ -1,0 +1,51 @@
+<ion-header *ngIf="!loadingData">
+  <ion-toolbar>
+    <ion-title>New chat</ion-title>
+    <ion-tab-button class="back-button" (click)="goToFeed()">
+      <ion-icon name="arrow-back-outline"></ion-icon>
+    </ion-tab-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+  <ion-list *ngIf="loadingData">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="5"></ion-col>
+        <ion-col size="3">
+          <ion-spinner name="dots"></ion-spinner>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-list>
+  <ion-item *ngIf="!loadingData">
+    <ion-searchbar animated [(ngModel)]="searchText" autocomplete="off" placeholder="Search for chat users..."></ion-searchbar>
+  </ion-item>
+  <ion-list class="users-list" *ngIf="!loadingData" lines="none">
+    <ion-item *ngFor="let user of users | filter:searchText" (click)="addUser(user)">
+      <div class="ion-content">
+        {{ user.userName }}
+        <ion-icon color="success" name="add-circle-outline"></ion-icon>
+      </div>
+    </ion-item>
+  </ion-list>
+  <ion-title class="users-list-title" *ngIf="selectedUsers.length > 0">Selected Chat Users</ion-title>
+  <ion-title class="users-list-title" *ngIf="selectedUsers.length === 0">No Selected Chat Users.</ion-title>
+  <ion-list class="users-list" lines="none">
+    <ion-item *ngFor="let selectedUser of selectedUsers" (click)="removeUser(selectedUser)">
+      <div class="ion-content">
+        {{ selectedUser.userName }}
+        <ion-icon color="danger" name="remove-circle-outline"></ion-icon>
+      </div>
+    </ion-item>
+    <ion-button type="submit"
+                color="success" 
+                fill="solid" 
+                [disabled]="selectedUsers.length === 0"
+                (click)="createNewChat()">
+      <ion-icon *ngIf="!chatSubmitted" slot="end" name="chatbubble-ellipses-outline"></ion-icon>
+      <ion-text *ngIf="!chatSubmitted">Create New Chat</ion-text>
+      <ion-spinner *ngIf="chatSubmitted" name="dots"></ion-spinner>
+    </ion-button>
+  </ion-list>
+</ion-content>

@@ -26,4 +26,8 @@ export class NavigationTabsComponent implements OnInit {
   logOut(){
     this.authService.logOut();
   }
+
+  openNewChat(){
+    this.navCtrl.navigateForward('/createNewChat')
+  }
 }

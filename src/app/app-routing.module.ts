@@ -36,9 +36,18 @@ const routes: Routes = [
     loadChildren: () => import('./pages/chat/chat.module').then( m => m.ChatPageModule)
   },
   {
+    path: 'createNewChat',
+    canActivate: [AuthGuard],
+    loadChildren: () => import('./pages/create-chat/create-chat.module').then( m => m.CreateChatPageModule)
+  },
+  {
     path: 'settings',
     canActivate: [AuthGuard],
     loadChildren: () => import('./pages/settings/settings.module').then( m => m.SettingsPageModule)
+  },
+  {
+    path: 'create-chat',
+    loadChildren: () => import('./pages/create-chat/create-chat.module').then( m => m.CreateChatPageModule)
   },
 ];
 

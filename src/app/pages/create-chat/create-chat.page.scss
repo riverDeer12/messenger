@@ -1,0 +1,41 @@
+.back-button{
+    float: left;
+}
+
+.users-list{
+    overflow-y: auto;
+    height: 30%;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.ion-content{
+    font-family: monospace;
+    font-weight: 600;
+}
+
+.create-new-chat-button{
+    float: right;
+}
+
+.users-list-item{
+    background-color: #058e3b;
+    color: #ffffff;
+}
+
+.users-list-title{
+    font-size: smaller;
+    font-weight: 600;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    background-color: white;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #058e3b;
+}

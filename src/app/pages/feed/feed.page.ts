@@ -1,4 +1,4 @@
-import { NavController } from '@ionic/angular';
+import { NavController, ModalController } from '@ionic/angular';
 import { ChatsService } from './../../services/chats.service';
 import { Component, OnInit } from '@angular/core';
 import { Chat } from 'src/app/shared/models/chat';
@@ -16,7 +16,8 @@ export class FeedPage implements OnInit {
   errorLoadingProfile: boolean;
 
   constructor(private chatsService: ChatsService,
-              private navCtrl: NavController) { }
+              private navCtrl: NavController,
+              public modalController: ModalController) { }
 
   ngOnInit() {
     this.loadingData = true;
@@ -37,5 +38,9 @@ export class FeedPage implements OnInit {
 
   openChat(chatId: string){
     this.navCtrl.navigateForward('/chat/' + chatId);
+  }
+
+  openNewChatDialog(){
+    this.navCtrl.navigateForward('/chat/create');
   }
 }

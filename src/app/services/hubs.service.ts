@@ -43,7 +43,6 @@ export class HubsService {
   joinChatHub(connectionId: string, chatId: string){
     this.chatsService.joinChat(connectionId, chatId).subscribe((response) => {
       console.log("Joined chat !")
-      console.log(response);
     });
   }
 

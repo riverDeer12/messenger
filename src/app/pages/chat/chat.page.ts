@@ -1,5 +1,5 @@
 import { MessagesService } from './../../services/messages.service';
-import { NavController, IonContent } from '@ionic/angular';
+import { NavController } from '@ionic/angular';
 import { MessageType } from './../../shared/enums/message-type.enum';
 import { Chat } from './../../shared/models/chat';
 import { ChatsService } from './../../services/chats.service';
@@ -9,6 +9,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Message } from 'src/app/shared/models/message';
 import { FormGroup, FormControl, Validators, NgForm } from '@angular/forms';
 import { UsersService } from 'src/app/services/users.service';
+import { User } from 'src/app/shared/models/user';
 
 @Component({
   selector: "app-chat",
@@ -22,6 +23,7 @@ export class ChatPage implements OnInit {
   chat: Chat;
   userName: string;
   messages: Message[];
+  chatUsers: User[];
   loadingData: boolean;
   errorSendingMessage: boolean;
 
@@ -63,9 +65,11 @@ export class ChatPage implements OnInit {
   getChat() {
     this.chatId = this.route.snapshot.paramMap.get("id");
 
-    this.chatsService.getChat(this.chatId).subscribe((response: any) => {
-      this.chat = response as Chat;
+    this.chatsService.getChat(this.chatId).subscribe((chat: any) => {
+      this.chat = Object.assign(new Chat(), chat);
       this.messages = this.chat.messages;
+      this.chatUsers = this.chat.users;
+      this.getUserDetails();
       this.loadingData = false;
       this.scrollToBottom();
     });
@@ -74,7 +78,6 @@ export class ChatPage implements OnInit {
   subscribeToChatEvents() {
     this.hubsService.getReceivedMessage().subscribe((response: any) => {
       this.messages.push(response as Message);
-      console.log("Got new message");
       this.scrollToBottom();
     });
   }
@@ -98,7 +101,6 @@ export class ChatPage implements OnInit {
     this.usersService.getUserDetails().subscribe(
       (response) =>{
         this.userName = response.userName;
-        console.log(response);
       })
   }
 

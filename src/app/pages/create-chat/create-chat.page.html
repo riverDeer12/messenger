@@ -38,8 +38,14 @@
         <ion-icon color="danger" name="remove-circle-outline"></ion-icon>
       </div>
     </ion-item>
-    <ion-button type="submit"
-                color="success" 
+    <form [formGroup]="chatForm" autocomplete="off">
+      <ion-item>
+        <ion-label position="floating">Chat Name</ion-label>
+        <ion-input formControlName="chatName"></ion-input>
+        <ion-icon name="at-outline" slot="start"></ion-icon>
+      </ion-item>
+    </form>
+    <ion-button color="success" 
                 fill="solid" 
                 [disabled]="selectedUsers.length === 0"
                 (click)="createNewChat()">

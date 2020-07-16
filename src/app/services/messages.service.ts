@@ -21,10 +21,6 @@ export class MessagesService {
     return this.http.post(this.messagesUrl + "/sendChatMessage", message);
   }
 
-  sendNewChatMessage(message: Message) {
-    return this.http.post(this.messagesUrl + "/sendNewChatMessage", message);
-  }
-
   getChatMessages(chatId: string){
     return this.http.get<Message[]>(this.messagesUrl + "/getChatMessages/" + chatId);
   }

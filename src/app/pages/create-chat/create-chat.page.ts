@@ -1,7 +1,10 @@
+import { Chat } from 'src/app/shared/models/chat';
+import { ChatsService } from './../../services/chats.service';
 import { UsersService } from './../../services/users.service';
 import { NavController } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/shared/models/user';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-create-chat',
@@ -9,7 +12,8 @@ import { User } from 'src/app/shared/models/user';
   styleUrls: ['./create-chat.page.scss'],
 })
 export class CreateChatPage implements OnInit {
-
+  
+  creatingError: boolean;
   searchText: string;
   loadingData: boolean;
   chatSubmitted: boolean;
@@ -17,13 +21,21 @@ export class CreateChatPage implements OnInit {
   selectedUsers: User[] = [];
 
   constructor(private navCtrl: NavController,
-              private usersService: UsersService) { }
+              private usersService: UsersService,
+              private chatsService: ChatsService) { }
 
   ngOnInit() {
+    this.creatingError = false;
     this.loadingData = true;
     this.chatSubmitted = false;
     this.getActiveChatUsers();
   }
+
+  chatForm = new FormGroup(
+    {
+      chatName: new FormControl('')
+    }
+  )
 
   goToFeed() {
     this.navCtrl.navigateBack("/feed");
@@ -54,6 +66,17 @@ export class CreateChatPage implements OnInit {
 
   createNewChat(){
     this.chatSubmitted = true;
-    console.log("WAAAAA!");
+
+    let chat = new Chat();
+
+    chat.users = this.selectedUsers;
+    chat.name = this.chatForm.controls["chatName"].value;
+
+    this.chatsService.createChat(chat).subscribe(
+      (response: any) =>{
+        this.chatSubmitted = true;
+        this.navCtrl.navigateForward("/chat/" + response.chatId);
+      });
+      
   }
 }

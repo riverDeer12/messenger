@@ -113,7 +113,8 @@ export class ChatPage implements OnInit {
     return MessageType;
   };
 
-  goToFeed() {
+  leaveChat() {
+    this.hubsService.endConnection();
     this.navCtrl.navigateBack("/feed");
   }
 }

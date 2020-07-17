@@ -1,7 +1,6 @@
 import { User } from './../../shared/models/user';
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from 'src/app/services/users.service';
-import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-profile',

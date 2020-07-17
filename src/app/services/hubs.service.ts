@@ -40,6 +40,11 @@ export class HubsService {
     );
   }
 
+  endConnection(){
+      this.hubConnection.stop();
+      this.hubConnection = null;
+  }
+
   joinChatHub(connectionId: string, chatId: string){
     this.chatsService.joinChat(connectionId, chatId).subscribe((response) => {
       console.log("Joined chat !")

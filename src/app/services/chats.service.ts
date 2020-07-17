@@ -30,6 +30,10 @@ export class ChatsService {
     return this.http.get<object>(this.chatsUrl + '/joinChat/' + connectionId + '/' + chatId);
   }
 
+  leaveChat(connectionId: string, chatId: string){
+    return this.http.get<object>(this.chatsUrl + '/leaveChat/' + connectionId + '/' + chatId);
+  }
+
   createChat(chat: Chat){
     return this.http.post(this.chatsUrl + "/postNewChat", chat);
   }

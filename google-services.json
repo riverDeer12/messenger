@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "372432620589",
+    "firebase_url": "https://messenger-684fa.firebaseio.com",
+    "project_id": "messenger-684fa",
+    "storage_bucket": "messenger-684fa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:372432620589:android:1aa202cec190db05c83ca4",
+        "android_client_info": {
+          "package_name": "com.riverdeermessenger.project"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "372432620589-4har2c61cv9kdf5si5jkd2ls9p9ul9gn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAsDZ8otlRqE3lWjtEOJSjNHKeL7HEyRR8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "372432620589-4har2c61cv9kdf5si5jkd2ls9p9ul9gn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

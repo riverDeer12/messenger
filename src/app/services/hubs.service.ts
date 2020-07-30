@@ -1,3 +1,4 @@
+import { environment } from 'src/environments/environment';
 import { ChatsService } from './chats.service';
 import { MessagesService } from './messages.service';
 import { Injectable, EventEmitter } from '@angular/core';
@@ -12,11 +13,10 @@ export class HubsService {
 
   messageReceived: EventEmitter<Message> = new EventEmitter();
   hubConnection: SignalR.HubConnection;
-  hubUrl = "https://localhost:44303/message";
   
   startConnection(chatId: string){
     this.hubConnection = new SignalR.HubConnectionBuilder()
-                            .withUrl(this.hubUrl)
+                            .withUrl(environment.messageHubUrl)
                             .configureLogging(SignalR.LogLevel.Information)
                             .build();
     

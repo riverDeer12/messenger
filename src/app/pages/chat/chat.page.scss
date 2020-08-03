@@ -1,17 +1,17 @@
 .item-content{
     background-color: #383a3e;
-    border-radius: 10px;
     padding: 10px;
     color: #ffffff;
     font-size: medium;
-    margin: 5px 0 5px 0;
     font-family: monospace;
+    border-radius: 3px;
     font-weight: bold;
 }
 
 .message-received{
-    background-color: #058e3b;
+    background-color: #1B8B75;
     color: #ffffff;
+    width: 100%;
 }
 
 .back-button{
@@ -27,4 +27,24 @@
     position: fixed;
     right: 20px;
     bottom: 6px;
+}
+
+.messages-container{
+    background-image: url('../../../assets/images/chat-default-bg.jpg');
+    background-repeat: repeat;
+}
+
+.message-item{
+    margin: 5px;
+    box-shadow: 0px 0px 4px 3px #888888;
+}
+
+ion-item{
+    --padding-start: 0px;
+    --inner-padding-end: 0px;
+    border-radius: 5px;
+}
+
+.message-input{
+    padding: 5px;
 }

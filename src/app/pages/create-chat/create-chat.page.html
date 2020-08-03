@@ -1,12 +1,12 @@
 <ion-header *ngIf="!loadingData">
   <ion-toolbar>
-    <ion-title>New chat</ion-title>
     <ion-tab-button class="back-button" (click)="goToFeed()">
       <ion-icon name="arrow-back-outline"></ion-icon>
     </ion-tab-button>
+    <ion-title>New chat</ion-title>
   </ion-toolbar>
 </ion-header>
-
+ 
 <ion-content fullscreen>
   <ion-list *ngIf="loadingData">
     <ion-grid>
@@ -21,6 +21,7 @@
   <ion-item *ngIf="!loadingData">
     <ion-searchbar animated [(ngModel)]="searchText" autocomplete="off" placeholder="Search for chat users..."></ion-searchbar>
   </ion-item>
+  <ion-title class="users-list-title">Available chat users</ion-title>
   <ion-list class="users-list" *ngIf="!loadingData" lines="none">
     <ion-item *ngFor="let user of users | filter:searchText" (click)="addUser(user)">
       <div class="ion-content">
@@ -40,15 +41,17 @@
     </ion-item>
     <form [formGroup]="chatForm" autocomplete="off">
       <ion-item>
-        <ion-label position="floating">Chat Name</ion-label>
+        <ion-label position="floating">Enter name of your new chat</ion-label>
         <ion-input formControlName="chatName"></ion-input>
         <ion-icon name="at-outline" slot="start"></ion-icon>
       </ion-item>
     </form>
-    <ion-button color="success" 
+  <ion-button class="spacing" 
+                color="primary" 
                 fill="solid" 
                 [disabled]="selectedUsers.length === 0"
                 (click)="createNewChat()">
+
       <ion-icon *ngIf="!chatSubmitted" slot="end" name="chatbubble-ellipses-outline"></ion-icon>
       <ion-text *ngIf="!chatSubmitted">Create New Chat</ion-text>
       <ion-spinner *ngIf="chatSubmitted" name="dots"></ion-spinner>

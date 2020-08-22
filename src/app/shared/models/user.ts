@@ -8,5 +8,6 @@ export class User {
     email: string;
     phoneNumber: string;
     userName: string;
-    chats: Chat[];
+    activeChats: BigInteger;
+    messagesSent: BigInteger;
 }

@@ -13,11 +13,11 @@
 </ion-content>
 
 <ion-header *ngIf="!loadingData">
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-tab-button class="back-button" (click)="leaveChat()">
       <ion-icon name="arrow-back-outline"></ion-icon>
     </ion-tab-button>
-    <ion-title>{{chat.name}}</ion-title>
+    <ion-title class="header-title">{{chat.name}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -31,7 +31,7 @@
               {{message.content}}
               <hr/>
               <div class="message-time">By: {{ message.applicationUser }}</div>
-              <div class="message-time">At: {{ message.createdAt | date: 'long'}}</div>
+              <div class="message-time">At: {{ message.createdAt | date:'dd.MM.yyyy, HH:mm'}}</div>
             </div>
           </ion-item>
         </ion-col>
@@ -42,7 +42,7 @@
               {{message.content}}
               <hr/>
               <div class="message-time">By: {{ message.applicationUser }}</div>
-              <div class="message-time">At: {{ message.createdAt | date: 'long'}}</div>
+              <div class="message-time">At: {{ message.createdAt | date:'dd.MM.yyyy, HH:mm'}}</div>
             </div>
           </ion-item>
         </ion-col>

@@ -2,22 +2,22 @@
   <ion-toolbar>
     <ion-tabs>
       <ion-tab-bar slot="bottom">
-        <ion-tab-button (click)="openNewChat()">
+        <ion-tab-button class="navigation-tab" (click)="openNewChat()">
           <ion-icon name="add-outline"></ion-icon>
           <ion-label>Create New Chat</ion-label>
         </ion-tab-button>
 
-        <ion-tab-button (click)="openFeed()">
+        <ion-tab-button class="navigation-tab" (click)="openFeed()">
           <ion-icon name="chatbubbles-outline"></ion-icon>
           <ion-label>Feed</ion-label>
         </ion-tab-button>
     
-        <ion-tab-button (click)="openProfile()">
+        <ion-tab-button class="navigation-tab" (click)="openProfile()">
           <ion-icon name="person-circle-outline"></ion-icon>
           <ion-label>My Profile</ion-label>
         </ion-tab-button>
     
-        <ion-tab-button (click)="logOut()">
+        <ion-tab-button class="navigation-tab" (click)="logOut()">
           <ion-icon name="log-out-outline"></ion-icon>
           <ion-label>Log Out</ion-label>
         </ion-tab-button>

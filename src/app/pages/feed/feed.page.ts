@@ -2,7 +2,6 @@ import { NavController, ModalController } from '@ionic/angular';
 import { ChatsService } from './../../services/chats.service';
 import { Component, OnInit } from '@angular/core';
 import { Chat } from 'src/app/shared/models/chat';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-feed',

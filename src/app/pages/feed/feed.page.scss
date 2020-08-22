@@ -1,3 +1,23 @@
 .date-text{
     float: right;
+    font-family: monospace;
+    font-size: small;
+}
+
+.avatar {
+    max-width: 100%;
+    border: 2px solid #1B8B75;
+    padding: 2px;
+}
+
+.toolbar-background{
+    background-color: #1B8B75 !important;
+}
+
+.header-title{
+    font-family: monospace;
+}
+
+.chat-item-heading-title{
+    font-family: monospace;
 }

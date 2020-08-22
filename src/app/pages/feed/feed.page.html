@@ -1,10 +1,10 @@
-<ion-header translucent>
-  <ion-toolbar>
-    <ion-title>Your chats</ion-title>
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title class="header-title">Your chats</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content fullscreen>
+<ion-content class="content" fullscreen>
 
   <ion-grid *ngIf="loadingData">
     <ion-row>
@@ -17,12 +17,12 @@
 
   <ion-list *ngIf="!loadingData">
     <ion-item *ngFor="let chat of chats" (click)="openChat(chat.chatId)">
-      <ion-avatar slot="start">
+      <ion-avatar class="avatar" slot="start">
         <img src="assets/images/default-man.png">
       </ion-avatar>
       <ion-label>
-        <h2>{{chat.name}}</h2>
-        <p class="date-text">Last activity: {{chat.lastActivityAt | date:'short' }}</p>
+        <h3 class="chat-item-heading-title">{{chat.name}}</h3>
+        <p class="date-text">{{chat.lastActivityAt | date:'dd.MM.yyyy, HH:mm' }}</p>
       </ion-label>
     </ion-item>
   </ion-list>

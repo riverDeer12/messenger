@@ -6,16 +6,23 @@
     font-family: monospace;
     border-radius: 3px;
     font-weight: bold;
+    width: 100%;
+}
+
+.header-title{
+    font-family: monospace;
 }
 
 .message-received{
     background-color: #1B8B75;
     color: #ffffff;
-    width: 100%;
 }
 
 .back-button{
     float: left;
+    background-color: #1B8B75;
+    color: #ffffff;
+    font-family: monospace;
 }
 
 .message-time{
@@ -32,6 +39,7 @@
 .messages-container{
     background-image: url('../../../assets/images/chat-default-bg.jpg');
     background-repeat: repeat;
+    background-size: contain;
 }
 
 .message-item{
@@ -47,4 +55,5 @@ ion-item{
 
 .message-input{
     padding: 5px;
+    font-family: monospace;
 }

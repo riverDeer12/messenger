@@ -15,17 +15,26 @@
     </ion-row>
   </ion-grid>
 
-  <ion-list *ngIf="!loadingData">
+  <ion-list *ngIf="!loadingData && hasActiveChats">
     <ion-item *ngFor="let chat of chats" (click)="openChat(chat.chatId)">
       <ion-avatar class="avatar" slot="start">
         <img src="assets/images/default-man.png">
       </ion-avatar>
       <ion-label>
         <h3 class="chat-item-heading-title">{{chat.name}}</h3>
-        <p class="date-text">{{chat.lastActivityAt | date:'dd.MM.yyyy, HH:mm' }}</p>
+        <p class="date-text">Last activity: {{chat.lastActivityAt | date:'dd.MM.yyyy, HH:mm' }}</p>
       </ion-label>
     </ion-item>
   </ion-list>
+
+  <ion-list *ngIf="!hasActiveChats">
+    <ion-item>
+      <ion-label>
+        <h3 class="chat-item-heading-title">You don't have any active chats.</h3>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
 </ion-content>
 
 <navigation-tabs></navigation-tabs>

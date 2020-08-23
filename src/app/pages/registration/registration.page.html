@@ -1,3 +1,12 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-tab-button class="back-button" (click)="goToLogin()">
+      <ion-icon name="arrow-back-outline"></ion-icon>
+    </ion-tab-button>
+    <ion-title class="heading-title">Registration</ion-title>
+  </ion-toolbar>
+</ion-header>
+
 <ion-content>
   <form [formGroup]="registrationForm" autocomplete="off" (submit)="onSubmit(registrationForm)">
 
@@ -76,7 +85,7 @@
   </ion-list>
 
     <div class="ion-padding ion-text-center">
-      <ion-button type="submit" color="success" fill="solid" strong="true" [disabled]="registrationForm.invalid" expand="block">
+      <ion-button class="messenger-button" type="submit" color="success" fill="solid" strong="true" [disabled]="registrationForm.invalid" expand="block">
         <ion-text *ngIf="!registrationSubmited">Register</ion-text>
         <ion-spinner *ngIf="registrationSubmited" name="dots"></ion-spinner>
       </ion-button>

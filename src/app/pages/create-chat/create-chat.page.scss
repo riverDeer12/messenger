@@ -43,7 +43,13 @@
 }
 
 .spacing{
-    margin: 20px 0 20px 0;
+    position: relative;
+    left: 25%;
+    margin-top: 20px;
+}
+
+.new-chat-button{
+    --border-radius: 0;
 }
 
 .heading-title{

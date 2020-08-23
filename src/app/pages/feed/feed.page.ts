@@ -12,6 +12,7 @@ export class FeedPage implements OnInit {
 
   chats: Chat[] = [];
   loadingData: boolean;
+  hasActiveChats: boolean;
   errorLoadingProfile: boolean;
 
   constructor(private chatsService: ChatsService,
@@ -20,6 +21,7 @@ export class FeedPage implements OnInit {
 
   ngOnInit() {
     this.loadingData = true;
+    this.hasActiveChats = true;
     this.errorLoadingProfile = false;
     setTimeout(()=> {
       this.getActiveChats();
@@ -32,6 +34,9 @@ export class FeedPage implements OnInit {
         Object.assign(new Chat(), chat));
         console.log("Active chats:", chats);
         this.loadingData = false;
+        if(this.chats.length === 0){
+          this.hasActiveChats = false;
+        }
     });
   }
 

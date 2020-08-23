@@ -1,6 +1,6 @@
 <ion-content>
   <ion-card>
-        <img alt="logo" src="../../../assets/images/deervio-logo.jpg" > 
+        <img class="login-logo" alt="logo" src="../../../assets/images/messenger_logo.png" > 
     <ion-card-content>
       <form [formGroup]="loginForm" autocomplete="off" (submit)="onSubmit(loginForm)">
 
@@ -26,13 +26,15 @@
         </ion-item>
 
         <div class="ion-padding ion-text-center">
-          <ion-button type="submit" color="primary" fill="solid" [disabled]="loginForm.invalid" expand="block">
+          <ion-button class="messenger-button" type="submit" 
+          color="primary" fill="solid" [disabled]="loginForm.invalid" expand="block">
             <ion-text *ngIf="!loginSubmited">Login</ion-text>
             <ion-spinner *ngIf="loginSubmited" name="dots"></ion-spinner>
           </ion-button>
           <ion-text>
             or<br/>
-            <ion-button color="warning" expand="block" fill="solid" routerLink="/registration">Register</ion-button>
+            <ion-button class="messenger-button" color="warning" 
+            expand="block" fill="solid" routerLink="/registration">Register</ion-button>
           </ion-text>
         </div>
 

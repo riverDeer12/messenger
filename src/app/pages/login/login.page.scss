@@ -1,5 +1,13 @@
 .login-logo{
-    height: 43%;
-    left: 10%;
+    max-width: 70%;
+    padding: 45px;
+    border: 2px solid #1B8B75;
+    border-radius: 50%;
+    left: 15%;
+    margin-top: 27px;
     position: relative;
+}
+
+.messenger-button{
+    --border-radius: 0;
 }

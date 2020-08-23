@@ -21,8 +21,8 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content fullscreen *ngIf="!loadingData">
-  <ion-list>
+<ion-content *ngIf="!loadingData">
+  <ion-list class="message-item-list">
     <ion-grid class="messages-container">
       <ion-row *ngFor="let message of messages">
         <ion-col *ngIf="userName !== message.applicationUser">
@@ -54,7 +54,8 @@
 <ion-item>
   <form class="message-input" [formGroup]="sendMessageForm" autocomplete="off" (submit)="sendMessage(sendMessageForm)">
     <ion-input placeholder="Type message here..." type="text" formControlName="content"></ion-input>
-      <ion-button type="submit" class="send-message-button" color="success" fill="solid" 
+      <ion-button class="send-message-button" type="submit" color="success" 
+      fill="solid" 
         [disabled]="sendMessageForm.invalid">
         <ion-icon name="send-outline"></ion-icon>
       </ion-button>

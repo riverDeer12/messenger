@@ -54,4 +54,8 @@ export class RegistrationPage implements OnInit {
     }, 1000);
   }
 
+  goToLogin(){
+    this.router.navigateByUrl('/login');
+  }
+
 }

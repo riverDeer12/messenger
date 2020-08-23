@@ -4,7 +4,6 @@
     color: #ffffff;
     font-size: medium;
     font-family: monospace;
-    border-radius: 3px;
     font-weight: bold;
     width: 100%;
 }
@@ -31,6 +30,7 @@
 }
 
 .send-message-button{
+    --border-radius: 0;
     position: fixed;
     right: 20px;
     bottom: 6px;
@@ -50,10 +50,14 @@
 ion-item{
     --padding-start: 0px;
     --inner-padding-end: 0px;
-    border-radius: 5px;
 }
 
 .message-input{
     padding: 5px;
     font-family: monospace;
+}
+
+.message-item-list{
+    padding-top: 0;
+    padding-bottom: 0;
 }

@@ -36,4 +36,8 @@ export class ChatsService {
   createChat(chat: Chat){
     return this.http.post(this.chatsUrl + "/postNewChat", chat);
   }
+
+  archiveChat(chatId: string){
+    return this.http.get<object>(this.chatsUrl + "/archiveChat/" + chatId);
+  }
 }

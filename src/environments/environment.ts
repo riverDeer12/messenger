@@ -4,8 +4,6 @@
 
 export const environment = {
   production: false,
-  // apiUrl: "https://riverdeermessengerapi.azurewebsites.net/api",
-  // messageHubUrl: "https://riverdeermessengerapi.azurewebsites.net/message"
   apiUrl: "https://localhost:5001/api",
   messageHubUrl: "https://localhost:5001/message"
 };

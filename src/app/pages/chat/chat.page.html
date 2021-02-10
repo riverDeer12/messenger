@@ -17,7 +17,12 @@
     <ion-tab-button class="back-button" (click)="leaveChat()">
       <ion-icon name="arrow-back-outline"></ion-icon>
     </ion-tab-button>
-    <ion-title class="header-title">{{chat.name}}</ion-title>
+    <ion-title class="header-title">
+      <ion-tab-button class="archive-chat-button" (click)="archiveChat()">
+        <ion-icon name="archive-outline"></ion-icon>
+      </ion-tab-button>
+      {{chat.name}}
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 

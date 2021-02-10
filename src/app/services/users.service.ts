@@ -24,4 +24,8 @@ export class UsersService {
   getUserDetails(){
     return this.http.get<User>(this.usersUrl + "/getUserDetails");
   }
+
+  updateUserDetails(user: User){
+    return this.http.post(this.usersUrl + "/updateUserDetails/", user);
+  }
 }

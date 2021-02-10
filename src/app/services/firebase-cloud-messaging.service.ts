@@ -26,7 +26,7 @@ export class FirebaseCloudMessagingService {
     }
 
     if(!this.platform.is('cordova')){
-      //TODO
+      //currently not needed
     }
 
     return this.saveTokenToFirestore(token);

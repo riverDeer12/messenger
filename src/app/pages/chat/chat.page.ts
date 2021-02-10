@@ -97,6 +97,16 @@ export class ChatPage implements OnInit {
     );
   }
 
+  archiveChat(){
+    this.chatsService.archiveChat(this.chatId).subscribe(
+      (response: any) =>{
+        this.leaveChat();
+    },
+    () => {
+      this.errorSendingMessage = true;
+    })
+  }
+
   getUserDetails(){
     this.usersService.getUserDetails().subscribe(
       (response) =>{
